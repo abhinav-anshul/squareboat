@@ -1,0 +1,5 @@
+.container {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(180deg, #303f60 35%, #edf6ff 10%);
+}
