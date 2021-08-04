@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css";
 import "../../main.css";
 import { Link, useHistory } from "react-router-dom";
-import HeroImage from "../../Assets/hero-section.jpg";
+import HeroImage from "../../Assets/hero-section-min.jpg";
 import Mock from "../../MockData";
 import partnerImg from "../../Assets/partnerImg.png";
 

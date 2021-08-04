@@ -1,26 +1,30 @@
 /* eslint-disable no-lone-blocks */
 import React from "react";
+import "../../main.css";
 import { getAllJobs } from "../../API";
 
-import "../../main.css";
+function JobCard({ item, buttonText, onAction, currentJobs }) {
+  // const [jobsData, setJobsData] = React.useState({ data: [] });
+  // const [currentPage, setCurrentPage] = React.useState(1);
+  // const [jobsPerPage, setJobsPerPage] = React.useState(4);
 
-function JobCard({ currentJobs, item, buttonText, onAction }) {
-  const [jobsData, setJobsData] = React.useState({ data: [] });
+  // React.useEffect(() => {
+  //   getAllJobs()
+  //     .then((data) => {
+  //       setJobsData(data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
-  React.useEffect(() => {
-    getAllJobs()
-      .then((data) => {
-        setJobsData(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  // const indexOfLastJob = currentPage * jobsPerPage;
+  // const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+  // const currentJobs = jobsData.data.slice(indexOfFirstJob, indexOfLastJob);
 
-  console.log(currentJobs);
   return (
     <div className='job_main_container mb-3' style={{ width: "100%" }}>
-      {jobsData.data.map((job) => (
+      {currentJobs.map((job) => (
         <div className='job_main_container mb-3' style={{ width: "100%" }}>
           <div className='card_body p-3'>
             <h2 className='jobcard_heading'>{job.title}</h2>

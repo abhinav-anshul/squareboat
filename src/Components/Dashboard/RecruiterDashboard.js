@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import JobCard from "./JobCard";
+import RecruiterCard from "./RecruiterCard";
 import { getPostedJobs, getOneJobApplicants } from "../../API";
 import { Modal } from "react-bootstrap";
 
@@ -27,7 +27,7 @@ const RecruiterDashboard = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [userData.token]);
 
   const showApplicants = (arg) => {
     getOneJobApplicants(arg, userData.token)
@@ -54,7 +54,7 @@ const RecruiterDashboard = () => {
           <div className='row mt-4'>
             {jobsData.data.map((element, index) => (
               <div key={index} className='col-md-3'>
-                <JobCard
+                <RecruiterCard
                   key={index}
                   item={element}
                   buttonText={"View Applications"}

@@ -68,15 +68,15 @@ const CandidateDashboard = () => {
         </div>
         <h4 style={{ color: "black" }}>Jobs for you</h4>
         {/* {jobsData.data.map((element, index) => (
-            <div className='col-md-3'>
-              <JobCard
-                key={index}
-                item={element}
-                buttonText={"Apply"}
-                onAction={applicationJob}
-              />
-            </div>
-          ))} */}
+          <div className='col-md-3'>
+            < 
+              key={index}
+              item={element}
+              buttonText={"Apply"}
+              onAction={applicationJob}
+            />
+          </div>
+        ))} */}
 
         <div>
           <JobCard
