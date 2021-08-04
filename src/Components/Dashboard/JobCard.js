@@ -1,11 +1,26 @@
 /* eslint-disable no-lone-blocks */
 import React from "react";
+import { getAllJobs } from "../../API";
+
 import "../../main.css";
 
 function JobCard({ currentJobs, item, buttonText, onAction }) {
+  const [jobsData, setJobsData] = React.useState({ data: [] });
+
+  React.useEffect(() => {
+    getAllJobs()
+      .then((data) => {
+        setJobsData(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  console.log(currentJobs);
   return (
     <div className='job_main_container mb-3' style={{ width: "100%" }}>
-      {currentJobs.map((job) => (
+      {jobsData.data.map((job) => (
         <div className='job_main_container mb-3' style={{ width: "100%" }}>
           <div className='card_body p-3'>
             <h2 className='jobcard_heading'>{job.title}</h2>

@@ -1,16 +1,15 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-// import JobCard from "./JobCard";
 import { getAllJobs, applyJob } from "../../API";
 import { Toast } from "primereact/toast";
 ////
-import TestJobCard from "./JobCard";
+import JobCard from "./JobCard";
 import Pagination from "./Pagination";
 ////
 
 const CandidateDashboard = () => {
   ////
-  const [jobs, setJobs] = React.useState([]);
+  // const [jobs, setJobs] = React.useState([]);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [jobsPerPage, setJobsPerPage] = React.useState(5);
   ////
@@ -19,16 +18,17 @@ const CandidateDashboard = () => {
   const userData = JSON.parse(sessionStorage.getItem("userData"));
   const [jobsData, setJobsData] = React.useState({ data: [] });
   const toast = React.useRef();
+
   React.useEffect(() => {
     getAllJobs()
       .then((data) => {
         setJobsData(data);
-        setJobs(data);
+        // setJobs(data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  });
 
   const applicationJob = (arg) => {
     applyJob(arg, userData.token)
@@ -51,7 +51,6 @@ const CandidateDashboard = () => {
   const indexOfLastJob = currentPage * jobsPerPage;
   const indexOfFirstJob = indexOfLastJob - jobsPerPage;
   const currentJobs = jobsData.data.slice(indexOfFirstJob, indexOfLastJob);
-  console.log(jobs);
 
   function paginate(pageNumber) {
     setCurrentPage(pageNumber);
@@ -80,7 +79,7 @@ const CandidateDashboard = () => {
           ))} */}
 
         <div>
-          <TestJobCard
+          <JobCard
             currentJobs={currentJobs}
             buttonText={"Apply"}
             onAction={applicationJob}
