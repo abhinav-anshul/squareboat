@@ -91,7 +91,7 @@ function Login() {
           </form>
           <div className='text-center'>
             <p>
-              New to Myjobs?{" "}
+              New to Myjobs?
               <Link to='/signup' className='primary_text'>
                 Create an account
               </Link>

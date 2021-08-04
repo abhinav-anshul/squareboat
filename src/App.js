@@ -10,8 +10,11 @@ import "primereact/resources/themes/saga-blue/theme.css";
 import "primeicons/primeicons.css";
 import * as ROUTES from "./constants/routes";
 
-// components lazily loaded
+// components lazily loaded on first render
 const Dashboard = lazy(() => import("./Components/Dashboard/Dashboard"));
+const ChangePassword = lazy(() =>
+  import("./Components/ForgotPassword/ChangePassword")
+);
 const Login = lazy(() => import("./Components/Login/Login"));
 const Signup = lazy(() => import("./Components/Signup/Signup"));
 const ForgotPassword = lazy(() =>
@@ -26,6 +29,7 @@ const PrivateRoute = lazy(() => import("./Components/Util/PrivateRoute"));
 const Header = lazy(() => import("./Components/Header/Header"));
 const Home = lazy(() => import("./Components/Home/Home"));
 
+// A suspense based fallback to render react-skeleton while the API request is being loaded.
 function App() {
   return (
     <BrowserRouter>
@@ -40,6 +44,11 @@ function App() {
             component={ForgotPassword}
           ></Route>
           <Route path={ROUTES.RESETPASSWORD} component={ResetPassword}></Route>
+          <Route
+            path={ROUTES.CHANGEPASSWORD}
+            component={ChangePassword}
+          ></Route>
+
           <PrivateRoute path={ROUTES.DASHBOARD} component={Dashboard} />
           <PrivateRoute
             path={ROUTES.POSTJOB}

@@ -1,10 +1,20 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import JobCard from "./JobCard";
+// import JobCard from "./JobCard";
 import { getAllJobs, applyJob } from "../../API";
 import { Toast } from "primereact/toast";
+////
+import TestJobCard from "./JobCard";
+import Pagination from "./Pagination";
+////
 
 const CandidateDashboard = () => {
+  ////
+  const [jobs, setJobs] = React.useState([]);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [jobsPerPage, setJobsPerPage] = React.useState(5);
+  ////
+
   const location = useLocation();
   const userData = JSON.parse(sessionStorage.getItem("userData"));
   const [jobsData, setJobsData] = React.useState({ data: [] });
@@ -13,7 +23,7 @@ const CandidateDashboard = () => {
     getAllJobs()
       .then((data) => {
         setJobsData(data);
-        // console.log(data.dat)
+        setJobs(data);
       })
       .catch((error) => {
         console.log(error);
@@ -38,6 +48,15 @@ const CandidateDashboard = () => {
       });
   };
 
+  const indexOfLastJob = currentPage * jobsPerPage;
+  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+  const currentJobs = jobsData.data.slice(indexOfFirstJob, indexOfLastJob);
+  console.log(jobs);
+
+  function paginate(pageNumber) {
+    setCurrentPage(pageNumber);
+  }
+
   return (
     <div className='signup_main_container'>
       <Toast ref={toast} />
@@ -48,9 +67,8 @@ const CandidateDashboard = () => {
             {location.pathname === "/dashboard" ? "Home" : "Dashboard"}
           </p>
         </div>
-        <h4 style={{ color: "#ffffff" }}>Jobs for you</h4>
-        <div className='row'>
-          {jobsData.data.map((element, index) => (
+        <h4 style={{ color: "black" }}>Jobs for you</h4>
+        {/* {jobsData.data.map((element, index) => (
             <div className='col-md-3'>
               <JobCard
                 key={index}
@@ -59,10 +77,23 @@ const CandidateDashboard = () => {
                 onAction={applicationJob}
               />
             </div>
-          ))}
+          ))} */}
+
+        <div>
+          <TestJobCard
+            currentJobs={currentJobs}
+            buttonText={"Apply"}
+            onAction={applicationJob}
+          />
+          <Pagination
+            jobsPerPage={jobsPerPage}
+            totalJobs={jobsData}
+            paginate={paginate}
+          />
         </div>
       </div>
     </div>
+    // </div>
   );
 };
 

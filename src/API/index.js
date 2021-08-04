@@ -1,3 +1,4 @@
+/* eslint-disable */
 const BASEURL = "https://jobs-api.squareboat.info/api/v1";
 
 export const login = (value) => {
@@ -53,24 +54,73 @@ export const register = (value) => {
   });
 };
 
-export const resetPassword = (value) => {
-  return new Promise((resolve, reject) => {
-    fetch(BASEURL + "/auth/register", {
+// export const resetPassword = (emailAddress) => {
+//   return new Promise((resolve, reject) => {
+//     fetch(BASEURL + `/auth/resetPassword?email=${emailAddress}`, {
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     .then((response) => response.json())
+//     .then((data) => {
+//       resolve(data);
+//     })
+//     .catch((error) => {
+//       reject(error);
+//     });
+//   });
+// };
+
+export async function getPasswordResetToken(emailAddress) {
+  const result = await fetch(
+    BASEURL + `/auth/resetPassword?email=${emailAddress}`,
+    {
+      method: "GET",
+    }
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      window.localStorage.setItem("token", data.data.token);
+      return data.data.token;
+    });
+
+  console.log("RESULT", result);
+}
+
+export async function getTokenValidation(token) {
+  const result = await fetch(BASEURL + `/auth/resetpassword/${token}`, {
+    method: "GET",
+  });
+  return result.ok;
+}
+
+export async function sendPasswordTokenBody(password, confirmPassword, token) {
+  const result = await fetch(
+    "https://jobs-api.squareboat.info/api/v1/auth/resetpassword",
+    {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify(value),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        resolve(data);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  });
-};
+      body: {
+        mode: "raw",
+        raw: {
+          /* prettier-ignore */
+          "password": password,
+          /* prettier-ignore */
+          "confirmPassword" : confirmPassword,
+          /* prettier-ignore */
+          "token": window.localStorage.getItem("token"),
+        },
+      },
+    }
+  );
+  console.log(result.json());
+  return result;
+}
 
 export const getPostedJobs = (value) => {
   return new Promise((resolve, reject) => {

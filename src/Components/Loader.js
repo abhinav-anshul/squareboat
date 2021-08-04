@@ -1,46 +1,20 @@
+// react skeleton component for suspense fallbak
 import React from "react";
 import ContentLoader from "react-content-loader";
 
 const Loader = (props) => {
   return (
     <ContentLoader
-      viewBox='0 0 100% 650'
-      height={650}
-      width={"100%"}
+      width={450}
+      height={400}
+      viewBox='0 0 450 400'
+      backgroundColor='#f0f0f0'
+      foregroundColor='#dedede'
       {...props}
     >
-      <rect x='0' y='0' rx='5' ry='5' width='40%' height='20' />
-      <rect x='0' y='42' rx='5' ry='5' width='100%' height='200' />
-      <rect x='0' y='265' rx='5' ry='5' width='100%' height='10' />
-      <rect x='0' y='285' rx='5' ry='5' width='100%' height='10' />
-      <rect x='0' y='305' rx='5' ry='5' width='100%' height='10' />
-      <rect x='0' y='335' rx='5' ry='5' width='65%' height='10' />
-      <rect x='75%' y='335' rx='5' ry='5' width='10%' height='10' />
-      <rect x='0' y='355' rx='5' ry='5' width='65%' height='10' />
-      <rect x='75%' y='355' rx='5' ry='5' width='30%' height='10' />
-      <rect x='0' y='375' rx='5' ry='5' width='65%' height='10' />
-      <rect x='75%' y='375' rx='5' ry='5' width='30%' height='10' />
-      <rect x='0' y='395' rx='5' ry='5' width='65%' height='8' />
-      <rect x='75%' y='395' rx='5' ry='5' width='30%' height='8' />
-      <rect x='0' y='415' rx='5' ry='5' width='65%' height='8' />
-      <rect x='75%' y='415' rx='5' ry='5' width='30%' height='8' />
-      <rect x='0' y='445' rx='5' ry='5' width='65%' height='8' />
-      <rect x='75%' y='445' rx='5' ry='5' width='30%' height='8' />
-      <rect x='0' y='465' rx='5' ry='5' width='65%' height='8' />
-      <rect x='75%' y='465' rx='5' ry='5' width='30%' height='8' />
-      <rect x='0' y='485' rx='5' ry='5' width='65%' height='8' />
-      <rect x='75%' y='485' rx='5' ry='5' width='30%' height='8' />
-      <rect x='0' y='505' rx='5' ry='5' width='65%' height='8' />
-      <rect x='75%' y='505' rx='5' ry='5' width='30%' height='8' />
-      <rect x='0' y='525' rx='5' ry='5' width='65%' height='8' />
-      <rect x='75%' y='525' rx='5' ry='5' width='30%' height='8' />
-      <rect x='75%' y='550' rx='5' ry='5' width='10%' height='10' />
-      <circle cx='76.5%' cy='590' r='18' />
-      <circle cx='80%' cy='590' r='18' />
-      <circle cx='83.5%' cy='590' r='18' />
-      <circle cx='87%' cy='590' r='18' />
-      <circle cx='90.5%' cy='590' r='18' />
-      <circle cx='94%' cy='590' r='18' />
+      <rect x='43' y='304' rx='4' ry='4' width='271' height='9' />
+      <rect x='44' y='323' rx='3' ry='3' width='119' height='6' />
+      <rect x='42' y='77' rx='10' ry='10' width='388' height='217' />
     </ContentLoader>
   );
 };

@@ -1,3 +1,5 @@
+// protecting routes
+
 import React from "react";
 import * as ROUTES from "../../constants/routes";
 import { Redirect, Route } from "react-router-dom";

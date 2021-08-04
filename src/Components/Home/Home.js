@@ -22,9 +22,11 @@ function Home() {
                 <h1 className='welcome_heading'>
                   Welcome to My<span style={{ color: "#43AFFF" }}>Jobs</span>
                 </h1>
-                <Link to='/login' className='primary_button'>
-                  Get Started
-                </Link>
+                <div style={{ marginTop: "40px" }}>
+                  <Link to='/login' className='primary_button '>
+                    Get Started
+                  </Link>
+                </div>
               </div>
             </div>
             <div className='col-md-6'>

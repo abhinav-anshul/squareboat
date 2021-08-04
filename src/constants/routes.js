@@ -6,3 +6,4 @@ export const FORGOTPASSWORD = "/forgotpassword";
 export const RESETPASSWORD = "/resetpassword";
 export const APPLIEDJOBS = "/appliedjobs";
 export const POSTJOB = "/postjob";
+export const CHANGEPASSWORD = "/changepassword";
