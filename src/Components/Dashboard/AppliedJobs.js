@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import JobCard from "./JobCard";
+import RecruiterCard from "./RecruiterCard";
 import { getAppliedJobs } from "../../API";
 
 const AppliedJobs = () => {
@@ -35,7 +35,7 @@ const AppliedJobs = () => {
           <div className='row mt-4'>
             {jobsData.data.map((element, index) => (
               <div className='col-md-3'>
-                <JobCard key={index} item={element} buttonText={""} />
+                <RecruiterCard key={index} item={element} buttonText={""} />
               </div>
             ))}
           </div>
